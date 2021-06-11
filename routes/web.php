@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\RoomTypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,6 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'is_admin'], function(){
       Route::resource('pages', PagesController::class);
+      Route::resource('roomtype', RoomTypeController::class);
     });
 });

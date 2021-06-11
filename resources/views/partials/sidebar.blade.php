@@ -1,6 +1,3 @@
-
-
-
 <div class="c-sidebar c-sidebar-dark  c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-md-down-none">
         <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
@@ -11,21 +8,25 @@
         </svg>
     </div>
     <ul class="c-sidebar-nav">
-        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('home')}}">
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('home') }}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
-                </svg> Dashboard<span class="badge badge-info">NEW</span></a>
+                </svg> {{ __('Dashboard') }}<span class="badge badge-info">{{ __('NEW') }}</span></a>
         </li>
-       @if (auth()->user()->is_admin)
-           
-        <li class="c-sidebar-nav-title">Admin</li>
-        <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-link" 
-            href="{{route('admin.pages.index')}}">
+        @if (auth()->user()->is_admin)
+
+            <li class="c-sidebar-nav-title">Admin</li>
+            <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show"><a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle c-active" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}"></use>
-                </svg> Pages</a>
-        </li>
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+                </svg> {{__('Rooms')}}</a>
+                <ul class="c-sidebar-nav-dropdown-items">
+
+                <li class="c-sidebar-nav-item"> <a class="c-sidebar-nav-link" href="{{ route('admin.roomtype.create') }}">
+                    <span>{{ __('Room Types') }}</span></a></li>
+                
+                </ul>
+                </li>
         @endif
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="{{ route('logout') }}" onclick="event.preventDefault();
