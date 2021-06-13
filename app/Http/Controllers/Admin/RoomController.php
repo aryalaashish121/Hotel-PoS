@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RoomTypeRequest;
-use App\Models\RoomType;
+use App\Http\Requests\RoomCreateRequest;
+use App\Http\Requests\RoomUpdateRequest;
+use App\Models\Room;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
-class RoomTypeController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,7 @@ class RoomTypeController extends Controller
      */
     public function index()
     {
-        
-        return view('admin.roomtype.roomtype');
+        return view('admin.rooms.rooms');
     }
 
     /**
@@ -28,7 +27,7 @@ class RoomTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.roomtype.add');
+        return view('admin.rooms.add');
     }
 
     /**
@@ -37,19 +36,19 @@ class RoomTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoomTypeRequest $request)
+    public function store(RoomCreateRequest $request)
     {
-       RoomType::create($request->validated());
-        return redirect()->route('admin.roomtype.index');
+        Room::create($request->validated());
+        return redirect()->route('admin.rooms.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RoomType  $roomType
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(RoomType $roomType)
+    public function show(Room $room)
     {
         //
     }
@@ -57,44 +56,42 @@ class RoomTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RoomType  $roomType
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function edit(RoomType $roomType,$id): View
+    public function edit($id)
     {
-     $data = RoomType::where('id', $id)->first();
+        $data = Room::where('id', $id)->first();
 
-     return view('admin.roomtype.edit')->with('roomType',$data);
-
-     // return view('admin.roomtype.edit', compact('roomType'));
+        return view('admin.rooms.edit')->with('rooms',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RoomType  $roomType
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(RoomTypeRequest $request,$id)
+    public function update(RoomUpdateRequest $request,$id)
     {
-        $checkID = RoomType::findOrFail($id);
+        $checkID = Room::findOrFail($id);
         if($checkID)
-        RoomType::where('id',$id)->update($request->validated());
+        Room::where('id',$id)->update($request->validated());
 
-        return redirect()->route('admin.roomtype.index');
+        return redirect()->route('admin.rooms.index')->with('success','succesfully updated');
     }
-
+  
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RoomType  $roomType
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = RoomType::FindOrFail($id);
+        $data = Room::FindOrFail($id);
         $data->delete();
-        return redirect()->route('admin.roomtype.index');
+        return redirect()->route('admin.rooms.index');
     }
 }

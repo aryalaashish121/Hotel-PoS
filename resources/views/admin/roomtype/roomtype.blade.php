@@ -28,23 +28,25 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach (\App\Models\RoomType::all() as $roomTypes)
+                            @foreach (\App\Models\RoomType::all() as $roomType)
                         <tr>
                            
-                        <td>{{ $roomTypes->name}}</td>
-                        <td>{{ $roomTypes->created_at}}</td>
+                        <td>{{ $roomType->name}}</td>
+                        <td>{{ $roomType->created_at}}</td>
                         <td><span class="badge badge-success">{{__('Active')}}</span></td>
+                        <td><span class="badge badge-success">{{$roomType->id}}</span></td>
                         <td>
                            
                               
                             <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
-                                <form action="{{ route('admin.roomtype.edit', $roomTypes) }}" method="GET">
+                                <form action="{{ route('admin.roomtype.edit', $roomType->id) }}" >
                                     @csrf
+                                    @method('POST')
                                 <button class="btn btn-sm btn-pill btn-info" type="submit">{{__('Update')}}</button>
                                 </form>
-                                <form action="{{ route('admin.roomtype.destroy', $roomTypes) }}" method="delete">
+                                <form action="{{ route('admin.roomtype.destroy', $roomType) }}" method="POST">
                                     @csrf
-                                    @method('delete')
+                                    @method('DELETE')
                                 <button class="btn btn-sm btn-pill btn-danger" type="submit">{{__('Delete')}}</button>
                             </form>
                             </div>

@@ -24,8 +24,9 @@
                                 </ul>
                             </div>
                         @endif
+                       
 
-                        <form action="{{route('admin.roomtype.update',$roomType->id)}}" method="POST">
+                        <form action="{{route('admin.roomtype.update',$roomType)}}" method="POST">
                             @csrf
                             @method('PUT')
                         <div class="card-body">
@@ -37,6 +38,13 @@
                             <button class="btn btn-block btn-outline-success active" type="submit" aria-pressed="true">{{__('Update')}}</button>
                             </div>
                         </div>
+                        </form>
+
+                        <form action="{{ route('admin.roomtype.destroy', $roomType) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger" type="submit"
+                                onclick="return confirm('{{ __('Are you sure?') }}')"> {{ __('Delete This Room Type') }}</button>
                         </form>
                         </div>
                         </div>

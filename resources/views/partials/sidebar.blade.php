@@ -22,11 +22,31 @@
                 </svg> {{__('Rooms')}}</a>
                 <ul class="c-sidebar-nav-dropdown-items">
 
-                <li class="c-sidebar-nav-item"> <a class="c-sidebar-nav-link" href="{{ route('admin.roomtype.create') }}">
+                <li class="c-sidebar-nav-item"> <a class="c-sidebar-nav-link" href="{{ route('admin.roomtype.index') }}">
                     <span>{{ __('Room Types') }}</span></a></li>
-                
+                    <li class="c-sidebar-nav-item"> <a class="c-sidebar-nav-link" href="{{ route('admin.rooms.index') }}">
+                        <span>{{ __('Rooms') }}</span></a></li>
                 </ul>
                 </li>
+                {{-- Customers --}}
+                <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show"><a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle c-active" href="{{ route('admin.customer.index') }}">
+                    <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+                    </svg> {{__('Customers')}}</a>
+                    <ul class="c-sidebar-nav-dropdown-items">
+    
+                    <li class="c-sidebar-nav-item">
+                        <a class="c-sidebar-nav-link" href="{{ route('admin.customer.index') }}">
+                            <span>{{ __('Customers') }}</span>
+                        </a>
+                    </li>
+                        {{-- <li class="c-sidebar-nav-item"> 
+                            <a class="c-sidebar-nav-link" href="{{ route('admin.customer.index') }}">
+                                 <span>{{ __('Rooms') }}</span>
+                            </a>
+                        </li> --}}
+                    </ul>
+                    </li>
         @endif
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="{{ route('logout') }}" onclick="event.preventDefault();
