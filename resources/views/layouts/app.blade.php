@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    @livewireStyles
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,6 +111,7 @@
 
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then CoreUI JS -->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.js"
         integrity="sha512-4ejaN8M2YXbJ7KVP13DaCS0fZOoNCUPukqOMumr8r32Xz1/2wRw4nCKJrNmTxstfH5Gf2oLe27YpAPiQr2OnTQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

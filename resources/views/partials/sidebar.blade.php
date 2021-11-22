@@ -40,6 +40,16 @@
                             <span>{{ __('Customers') }}</span>
                         </a>
                     </li>
+                    <li class="c-sidebar-nav-item">
+                        <a class="c-sidebar-nav-link" href="{{ route('admin.sales.index') }}">
+                            <span>{{ __('Sales') }}</span>
+                        </a>
+                    </li>
+                    <li class="c-sidebar-nav-item">
+                        <a class="c-sidebar-nav-link" href="{{ route('admin.sales.create') }}">
+                            <span>{{ __('ADD Sales') }}</span>
+                        </a>
+                    </li>
                         {{-- <li class="c-sidebar-nav-item"> 
                             <a class="c-sidebar-nav-link" href="{{ route('admin.customer.index') }}">
                                  <span>{{ __('Rooms') }}</span>

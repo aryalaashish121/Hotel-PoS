@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\RoomTypeController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,6 @@ Route::group(['middleware'=>'auth'], function(){
       Route::resource('roomtype', RoomTypeController::class);
       Route::resource('rooms', RoomController::class);
       Route::resource('customer', CustomerController::class);
+      Route::resource('sales', SaleController::class);
     });
 });
